@@ -1,4 +1,6 @@
 import database
+
+#stuff
 #import logging
 #logging.basicConfig(formate='%(asctime)s - %(message)s'level=logging.INFO,)
 #logginh.info('Order Logs')

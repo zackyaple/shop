@@ -45,9 +45,8 @@ def current_stock(product):
 
         with connection.cursor() as cursor:
             #read a single record contianing same variable name to confirm change
-            sql = "SELECT 'id', 'quantity' FROM 'inventory' WHERE 'product_name'=%S"
-            cursor.execute(sql, (product,))
+            sql = "SELECT ONLY 'quantity' FROM 'inventory' WHERE 'product_name'=%S"
+            cursor.execute(sql, (product))
             result = cursor.fetchone()
+            print(result)
     connection.close()
-
-

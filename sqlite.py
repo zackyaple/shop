@@ -18,15 +18,7 @@ def newstock(product, starting_quantity):
             cursor.execute(sql, (product, starting_quantity))
         #connections arent autocommited by defualt, so we commit changes next
         connection.commit()
-
-        with connection.cursor() as cursor:
-            #read a single record contianing same variable name to confirm change
-            sql = "SELECT 'id', 'quantity' FROM 'inventory' WHERE 'product_name'=%S"
-            cursor.execute(sql, (product,))
-            result = cursor.fetchone()
     connection.close()
-
-
 
 def update(product, new_quantity):
     with connection:
@@ -48,5 +40,14 @@ def remove(product):
         connection.commit()
     connection.close()
 
+def current_stock(product):
+    with connection:
+
+        with connection.cursor() as cursor:
+            #read a single record contianing same variable name to confirm change
+            sql = "SELECT 'id', 'quantity' FROM 'inventory' WHERE 'product_name'=%S"
+            cursor.execute(sql, (product,))
+            result = cursor.fetchone()
+    connection.close()
 
 

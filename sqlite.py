@@ -10,6 +10,8 @@ connection = pymysql.connect(
         database='db',
         charset='utf8mb4',
         cursorclass=pymysql.cursors.DictCursor)
+
+
 def newstock(product, starting_quantity):
     with connection:
         with connection.cursor() as cursor:

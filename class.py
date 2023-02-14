@@ -35,6 +35,3 @@ elif x == "plates":
     order.plate
 else:
     print("error")
-
-
-

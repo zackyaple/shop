@@ -50,5 +50,20 @@ def current_stock(product):
             sql = "SELECT ONLY 'quantity' FROM 'inventory' WHERE 'product_name'=%S"
             cursor.execute(sql, (product))
             result = cursor.fetchone()
-            print(result)
-    connection.close()
+            return result
+    connection.close():
+
+def product_lookup(product):
+    with connection:
+        with connection.cursor() as cursor:
+            sql = "SELECT * FROM 'inventory' WHERE 'product_name'=%s"
+            cursor.execute(sql, (product))
+            index = cursor.fetchone() 
+            if index == []:
+               print(nameProduct, "product couldn't be found.")
+                return None
+            else:
+                print("The product is %s, quantity: %s, product id: %s" % (index[0][0], index[0][1], index[0][2]))
+                result = print(bool(index))
+                return result
+

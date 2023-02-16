@@ -1,4 +1,4 @@
-import pymysql.cursors
+import pymysqlrsors
 
 #CREATE TABLE inventory(id INTERGER PRIMARY KEY, product_name TEXT, quantity INTEGER, UNIQUE(product_name), AUTO_INCREMENT=1)
 
@@ -12,7 +12,7 @@ connection = pymysql.connect(
         cursorclass=pymysql.cursors.DictCursor)
 
 
-def newstock(product, starting_quantity):
+def new_product(product, starting_quantity):
     with connection:
         with connection.cursor() as cursor:
             #create a new record
@@ -32,7 +32,7 @@ def update(product, new_quantity):
         connection.commit()
     connection.close()
 
-def remove(product):
+def remove_product(product):
     with connection:
         with connection.cursor() as cursor:
             #removes product from table
